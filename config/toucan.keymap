@@ -1,4 +1,10 @@
 // Toucan 2: Selenium keymap (HRM flavor) for an Ergo-L host on Linux
+//
+// 2026-09-10 hybrid: Selenium layers kept, base layer thumbs and home-row mods
+// changed to match Kevin's Corne Vial layout.
+//   HRM  : Ctrl/Alt/Gui on ring/middle/index (S D F, mirrored L K J). Pinky plain.
+//   Left thumbs  (outer->inner): Esc, Shift (hold) / sticky Shift (tap) / Caps Word (2 taps), Nav-Backspace
+//   Right thumbs (inner->outer): Nav-Space, Sym-Enter (hold), Fn-Delete
 // Hand-port of OneDeadKey/zmk-config-aekeynox using stock ZMK v0.3 behaviors,
 // so it drops into beekeeb/zmk-keyboard-toucan2 as config/toucan.keymap
 // with no other file changed (trackpad, screen, LEDs, zoom all untouched).
@@ -214,9 +220,9 @@
             display-name = "Base";
             bindings = <
 &kp TAB    &kp Q  &kp W          &kp E          &kp R          &kp T     &kp Y  &kp U          &kp I          &kp O          &kp P     &kp BSPC
-&kp ESC    &kp A  &hrm LGUI S    &hrm LCTRL D   &hrm LALT F    &kp G     &kp H  &hrm LALT J    &hrm LCTRL K   &hrm LGUI L    &kp SEMI  &kp RET
+&kp ESC    &kp A  &hrm LCTRL S   &hrm LALT D    &hrm LGUI F    &kp G     &kp H  &hrm LGUI J    &hrm LALT K    &hrm LCTRL L   &kp SEMI  &kp RET
 &kp LSHFT  &kp Z  &kp X          &kp C          &kp V          &kp B     &kp N  &kp M          &kp COMMA      &kp DOT        &kp FSLH  &kp RSHFT
-                  &shift_caps    &sc NAV BSPC   &sc FN TAB               &sc FN RET     &lt NAV SPACE  &sym_shift_altgr
+                  &kp ESC        &shift_caps    &sc NAV BSPC             &lt NAV SPACE  &sc SYM RET    &sc FN DEL
             >;
         };
 
@@ -227,7 +233,7 @@
 &trans  S_CARET S_LT    S_GT    S_DLLR  S_PRCNT     S_AT    S_AMPS  S_STAR  S_SQT   S_GRAVE  &trans
 &trans  S_LBRC  S_LPAR  S_RPAR  S_RBRC  S_EQUAL     S_BSLH  S_PLUS  S_MINUS S_FSLH  S_DQT    &trans
 &trans  S_TILDE S_LBKT  S_RBKT  S_UNDER S_HASH      S_PIPE  S_EXCL  S_SEMI  S_COLON S_QMARK  &trans
-                EZ_SL(NAV)  &kp SPACE  &kp RET      &trans  &trans  &trans
+                &trans  &trans  &trans      &trans  &trans  &trans
             >;
         };
 
@@ -238,7 +244,7 @@
 &trans  &kp ESC  &kp HOME &kp UP   &kp END   &kp PG_UP    &to NUML  &kp N7 &kp N8 &kp N9 S_FSLH  &trans
 &trans  X_ALL    &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN    S_MINUS   &kp N4 &kp N5 &kp N6 &kp N0  &trans
 &trans  X_UNDO   X_CUT    X_COPY   X_PASTE   X_REDO       S_COMMA   &kp N1 &kp N2 &kp N3 S_DOT   &trans
-                 EZ_SK(LSHIFT)  &sc FN DEL  &kp LS(TAB)   &kp ESC   &lt FN LS(SPACE)  &lbsk RALT RALT
+                 &trans         &trans      &kp LS(TAB)   &kp ESC   &lt FN LS(SPACE)  &lbsk RALT RALT
             >;
         };
 
@@ -249,7 +255,7 @@
 &trans  &kp ESC  &kp HOME &kp UP   &kp END   &kp PG_UP    &to BASE  &kp N7 &kp N8 &kp N9 S_FSLH  &trans
 &trans  S_EQUAL  &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN    S_MINUS   &kp N4 &kp N5 &kp N6 &kp N0  &trans
 &trans  S_MONEY  S_COLON  S_STAR   S_PLUS    S_PRCNT      S_COMMA   &kp N1 &kp N2 &kp N3 S_DOT   &trans
-                 &trans  &sc NAV BSPC  &kp TAB            &trans    &lt NAV LS(SPACE)  EZ_SL(SYM)
+                 &trans  &trans        &trans             &lt NAV LS(SPACE)  &trans    &trans
             >;
         };
 
@@ -271,7 +277,7 @@
 &trans  &kp F1 &kp F2  &kp F3  &kp F4  &none    &bt BT_SEL 2  &kp C_NEXT          &kp C_VOL_UP        &kp C_BRI_UP           &kp SLCK           &trans
 &trans  &kp F5 &kp F6  &kp F7  &kp F8  &none    &bt_sel1_clr  &hrm LALT C_PP      &hrm LCTRL C_MUTE   &hrm LGUI C_AL_LOCK    &hrm LSHFT PSCRN   &trans
 &trans  &kp F9 &kp F10 &kp F11 &kp F12 &none    &bt BT_SEL 0  &kp C_PREV          &kp C_VOL_DN        &kp C_BRI_DN           &kp INS            &trans
-                       &trans  &bootloader  &trans              &trans  &sys_reset  &studio_unlock
+                       &trans  &bootloader  &trans              &studio_unlock  &sys_reset  &trans
             >;
         };
     };
